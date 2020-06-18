@@ -72,7 +72,7 @@ select * from
 from(select * from BOARD2 where location like decode ('', null, '%', '') order by repRoot desc, repStep asc) b 
 left join site s on b.location = sid)where rnum >= 1 and rnum <= 100
 
-
+--주석
 
 
 
