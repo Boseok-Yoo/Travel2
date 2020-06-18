@@ -73,6 +73,8 @@ from(select * from BOARD2 where location like decode ('', null, '%', '') order b
 left join site s on b.location = sid)where rnum >= 1 and rnum <= 100
 
 --주석
+--주석2
+
 
 
 
