@@ -13,6 +13,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import kr.co.travel2.domain.BoardDTO;
+import kr.co.travel2.domain.LoginDTO;
 import kr.co.travel2.domain.PageTO;
 import kr.co.travel2.domain.SiteDTO;
 
@@ -457,4 +458,24 @@ public class BoardDAO {
 		return siteList;
 	}
 	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -47,8 +47,8 @@
       </div>
 
 	  <br>	
-      <label for="exampleFormControlInput1">작성자 ${dto.writer}</label>
-      <input name="writer" class="form-control" id="exampleFormControlInput1" value="${dto.writer}" required="required">
+      <label for="exampleFormControlInput1">작성자 ${login.id}</label>
+      <input name="writer" class="form-control" id="exampleFormControlInput1" value=" ${login.id}" required="required" readonly>
 
       <div class="form-group">
       	 <br>

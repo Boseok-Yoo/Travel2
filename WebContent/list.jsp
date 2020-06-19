@@ -11,50 +11,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="main.jsp"><p>메인</p></a>
+	<br>
 	<div class="container" style="margin:0 auto">
-	<h1 class="text-center">추천 여행지</h1><br><br>
+	<h2 class="text-center">추천 여행지</h2><br>
 	
+	<c:if test="${empty login.id}">
+		<a href="login.jsp">로그인</a>
+	</c:if>
+	
+	<c:if test="${not empty login.id}">
+		<a href="logout.do">로그아웃</a>
+	</c:if>
+	<br>
 	<a href="list.do?curPage=1&sid=" class="btn btn-outline-primary ${sid == dto.sid ? 'active' : ''}"  role="button">전체</a>
 
 	
 	<c:forEach items="${siteList}" var="dto">
 		<a href="list.do?curPage=1&sid=${dto.sid}" class="btn btn-outline-primary ${sid == dto.sid ? 'active' : ''}" role="button">${dto.location}</a>
 	</c:forEach>
-	
-	
-	
-	
-	
-	
-<!-- 	<a href="#" class="btn btn-outline-primary" role="button">부산</a>
-	<a href="#" class="btn btn-outline-primary" role="button">대구</a>
-	<a href="#" class="btn btn-outline-primary" role="button">인천</a>
-	<a href="#" class="btn btn-outline-primary" role="button">광주</a>
-	<a href="#" class="btn btn-outline-primary" role="button">대전</a>
-	<a href="#" class="btn btn-outline-primary" role="button">울산</a>
-	<a href="#" class="btn btn-outline-primary" role="button">세종</a>
-	<a href="#" class="btn btn-outline-primary" role="button">경기</a>
-	<a href="#" class="btn btn-outline-primary" role="button">강원</a>
-	<a href="#" class="btn btn-outline-primary" role="button">충북</a>
-	<a href="#" class="btn btn-outline-primary" role="button">충남</a>
-	<a href="#" class="btn btn-outline-primary" role="button">전북</a>
-	<a href="#" class="btn btn-outline-primary" role="button">전남</a>
-	<a href="#" class="btn btn-outline-primary" role="button">경북</a>
-	<a href="#" class="btn btn-outline-primary" role="button">경남</a>
-	<a href="#" class="btn btn-outline-primary" role="button">제주</a>
-	<a href="#" class="btn btn-outline-primary" role="button">기타</a> -->
-	
 
 	<br><br><br>	
 	
-  <h2 class="text-center">글 목록</h2>
+  <h3 class="text-center">글 목록</h3>
   <h6 class="text-center"><a href="insert.jsp">글 쓰기</a></h6>
   <table class="table table-bordered">
     <thead>
@@ -68,9 +54,7 @@
       </tr>
     </thead>
     <tbody>
-    
-
-    
+     
 	<c:forEach items="${list}" var="dto">
 		<tr>
 			<td>${dto.num}</td>
@@ -100,9 +84,7 @@
 	     </c:if>
 	    </c:forEach>    
 	    <li class="page-item ${to.curPage eq to.totalPage ? 'disabled' : ''}"><a class="page-link" href="list.do?curPage=${to.curPage < to.totalPage ? (to.curPage + 1) : to.totalPage}">Next</a></li>
-	  	</ul>
-	  	
-		
+	  	</ul>	
 	</div>
 
 	</body>

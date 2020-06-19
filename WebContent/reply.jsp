@@ -46,7 +46,7 @@
       
 	  <br>
       <label for="exampleFormControlInput1">작성자</label>
-      <input name="writer" class="form-control" id="exampleFormControlInput1" required="required">
+      <input name="writer" class="form-control" id="exampleFormControlInput1" value=" ${login.id}" required="required" readonly>
 
       <div class="form-group">
       	 <br>

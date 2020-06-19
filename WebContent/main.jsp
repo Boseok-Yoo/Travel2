@@ -7,10 +7,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Welcome</title>
 </head>
 <body>
-	<h1>메인 화면</h1>
+	<h1>메인 화면</h1><br>
+	
+	<a href="signup.jsp">회원 가입</a>
+	
+	<c:if test="${empty login}">
+		<a href="login.jsp">로그인</a>
+	</c:if>
+	
+	<c:if test="${not empty login}">
+		<a href="logout.do">로그아웃</a>
+	</c:if> <br><br><br>
 	
 	<a href="#">게시글</a>
 	<a href="list.do?curPage=1&sid=">추천 여행지</a>
@@ -19,5 +29,7 @@
 	<a href="#">맛집 정보</a>
 	<a href="#">공지사항</a>
 	<a href="#">Q&A</a>
+	
+	
 </body>
 </html>

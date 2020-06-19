@@ -37,8 +37,18 @@ insert into site (sid, location) values('016','경남')
 insert into site (sid, location) values('017','제주')
 insert into site (sid, location) values('018','기타')
 
-
 select * from site
+
+create table member(
+id varchar2(21) primary key,
+name varchar2(21),
+age number(3) check(age < 200),
+pw varchar2(21)
+)
+drop table member
+
+select * from member
+
 
 select num, writer, title, content, s.location, repRoot, repStep, repIndent from BOARD2 b
 left join SITE s on b.location = sid
@@ -71,9 +81,6 @@ select * from
 (select rownum rnum, num, writer, writeday, title, content, s.location, readcnt, repRoot, repStep, repIndent 
 from(select * from BOARD2 where location like decode ('', null, '%', '') order by repRoot desc, repStep asc) b 
 left join site s on b.location = sid)where rnum >= 1 and rnum <= 100
-
---주석
---주석2
 
 
 

@@ -19,28 +19,21 @@
 	<div class="container" style="margin:0 auto">
 	<h1 class="text-center">글 자세히 보기</h1>
 
-	
-
-	
-	
-	NUM: ${dto.num}<br>
-	지역: ${dto.location}<br>
-	작성 날짜:${dto.writeday}<br>
-	조회수: ${dto.readcnt}<br> 
-	작성자: ${dto.writer}<br>
-	제목: ${dto.title}<br>
-	내용: ${dto.content}<br>
-	
-	
-	
-
-
-
-	<a href="updateui.do?num=${dto.num}" class="btn btn-outline-primary" role="button">수정</a>
-	<a href="delete.do?num=${dto.num}" class="btn btn-outline-primary" role="button">삭제</a>
-	<a href="replyui.do?num=${dto.num}" class="btn btn-outline-primary" role="button">답글</a>
-	<a href="list.do" class="btn btn-outline-primary" role="button">목록</a>
-	
+	<div class="card">
+    <div class="card-body">
+    	NUM: ${dto.num}<br>
+		지역: ${dto.location}<br>
+		작성 날짜:${dto.writeday}<br>
+		조회수: ${dto.readcnt}<br> 
+		작성자: ${dto.writer}<br>
+		제목: ${dto.title}<br>
+		내용: ${dto.content}<br>
+    	<a href="updateui.do?num=${dto.num}" class="btn btn-outline-success" role="button">수정</a>
+		<a href="delete.do?num=${dto.num}" class="btn btn-outline-danger" role="button">삭제</a>
+		<a href="replyui.do?num=${dto.num}" class="btn btn-outline-info" role="button">답글</a>
+		<a href="list.do" class="btn btn-outline-primary" role="button">목록</a>
+    </div>
+  	</div>
 	</div>
 	
 </body>

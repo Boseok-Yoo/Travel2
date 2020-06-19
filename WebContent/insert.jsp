@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Insert</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -46,8 +46,8 @@
          </select> &nbsp; <input name="title" class="form-control" id="exampleFormControlInput1" value="${dto.title}" required="required">
       </div>
 	  <br>
-      <label for="exampleFormControlInput1">작성자 ${dto.writer}</label>
-      <input name="writer" class="form-control" id="exampleFormControlInput1" value="${dto.writer}" required="required">
+      <label for="exampleFormControlInput1">작성자 ${login.id}</label>
+      <input name="writer" class="form-control" id="exampleFormControlInput1" value="${login.id}" required="required" readonly>
 
       <div class="form-group">
       	 <br>

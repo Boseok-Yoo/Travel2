@@ -12,10 +12,20 @@ import kr.co.travel2.command.DeleteCommand;
 import kr.co.travel2.command.InsertCommand;
 import kr.co.travel2.command.InsertUICommand;
 import kr.co.travel2.command.ListPageCommand;
+import kr.co.travel2.command.LoginCommand;
+import kr.co.travel2.command.LoginUICommand;
+import kr.co.travel2.command.LogoutCommand;
 import kr.co.travel2.command.ReadCommand;
 import kr.co.travel2.command.ReplyCommand;
 import kr.co.travel2.command.ReplyUICommand;
+import kr.co.travel2.command.SelectByIdCommand;
+import kr.co.travel2.command.SelectCommand;
+import kr.co.travel2.command.SignupCommand;
+import kr.co.travel2.command.SignupUICommand;
+import kr.co.travel2.command.SignoutCommand;
 import kr.co.travel2.command.UpdateCommand;
+import kr.co.travel2.command.UpdateMemberCommand;
+import kr.co.travel2.command.UpdateMemberUICommand;
 import kr.co.travel2.command.UpdateUICommand;
 import kr.co.travel2.domain.Command;
 import kr.co.travel2.domain.CommandAction;
@@ -30,7 +40,8 @@ public class FrontController extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public FrontController() {}
+	public FrontController() {
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -55,13 +66,33 @@ public class FrontController extends HttpServlet {
 			com = new UpdateUICommand();
 		} else if (sp.equalsIgnoreCase("/update.do")) {
 			com = new UpdateCommand();
-		} else if(sp.equalsIgnoreCase("/delete.do")) {
+		} else if (sp.equalsIgnoreCase("/delete.do")) {
 			com = new DeleteCommand();
-		} else if(sp.equalsIgnoreCase("/replyui.do")) {
+		} else if (sp.equalsIgnoreCase("/replyui.do")) {
 			com = new ReplyUICommand();
-		} else if(sp.equalsIgnoreCase("/reply.do")) {
+		} else if (sp.equalsIgnoreCase("/reply.do")) {
 			com = new ReplyCommand();
-		} 
+		} else if (sp.equalsIgnoreCase("/loginui.do")) {
+			com = new LoginUICommand();
+		} else if (sp.equalsIgnoreCase("/login.do")) {
+			com = new LoginCommand();
+		} else if (sp.equalsIgnoreCase("/logout.do")) {
+			com = new LogoutCommand();
+		} else if (sp.equalsIgnoreCase("/signupui.do")) {
+			com = new SignupUICommand();
+		} else if (sp.equalsIgnoreCase("/signup.do")) {
+			com = new SignupCommand();
+		} else if (sp.equalsIgnoreCase("/selectById")) {
+			com = new SelectByIdCommand();
+		} else if (sp.equalsIgnoreCase("/select.do")) {
+			com = new SelectCommand();
+		} else if (sp.equalsIgnoreCase("/signout.do")) {
+			com = new SignoutCommand();
+		} else if (sp.equalsIgnoreCase("/updatememberui.do")) {
+			com = new UpdateMemberUICommand();
+		} else if (sp.equalsIgnoreCase("/updatemember.do")) {
+			com = new UpdateMemberCommand();
+		}
 		if (com != null) {
 			CommandAction action = com.execute(request, response);
 			if (action.isRedirect()) {
