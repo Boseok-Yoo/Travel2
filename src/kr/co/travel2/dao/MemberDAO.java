@@ -175,4 +175,35 @@ public class MemberDAO {
 			closeAll(null, pstmt, conn);
 		}	
 	}
+	public MemberDTO profile(String id) {
+		MemberDTO dto = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "select * from member where id = ?";
+		ResultSet rs = null;
+		
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String name = rs.getString("name");
+				int age = rs.getInt("age");
+				
+				dto = new MemberDTO(id, name, age, null);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+		
+		return dto;
+	}
+	
+		
 }
+	

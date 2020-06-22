@@ -16,11 +16,11 @@
 
 </head>
 <body>   
-   <form class="container" action="reply.do" method="get">
+   <form class="container" action="reply.do" method="post">
       <h2>답글</h2>
       <input name="num" value="${dto.num}" hidden="true"> <label for="exampleFormControlInput1">제목</label> <br>
       <div class="form-inline">
-         <select class="custom-select" name="location" id="location" disabled="disabled">
+         <select class="custom-select" name="location" id="location">
             <!-- <optgroup label="지역"> -->
             <option value="001">서울</option>
             <option value="002">부산</option>

@@ -15,14 +15,15 @@ import kr.co.travel2.command.ListPageCommand;
 import kr.co.travel2.command.LoginCommand;
 import kr.co.travel2.command.LoginUICommand;
 import kr.co.travel2.command.LogoutCommand;
+import kr.co.travel2.command.ProfileCommand;
 import kr.co.travel2.command.ReadCommand;
 import kr.co.travel2.command.ReplyCommand;
 import kr.co.travel2.command.ReplyUICommand;
 import kr.co.travel2.command.SelectByIdCommand;
 import kr.co.travel2.command.SelectCommand;
+import kr.co.travel2.command.SignoutCommand;
 import kr.co.travel2.command.SignupCommand;
 import kr.co.travel2.command.SignupUICommand;
-import kr.co.travel2.command.SignoutCommand;
 import kr.co.travel2.command.UpdateCommand;
 import kr.co.travel2.command.UpdateMemberCommand;
 import kr.co.travel2.command.UpdateMemberUICommand;
@@ -92,6 +93,8 @@ public class FrontController extends HttpServlet {
 			com = new UpdateMemberUICommand();
 		} else if (sp.equalsIgnoreCase("/updatemember.do")) {
 			com = new UpdateMemberCommand();
+		} else if (sp.equalsIgnoreCase("/profile.do")) {
+			com = new ProfileCommand();
 		}
 		if (com != null) {
 			CommandAction action = com.execute(request, response);
