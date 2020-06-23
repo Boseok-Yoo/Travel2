@@ -29,7 +29,7 @@ public class SignoutCommand implements Command {
 					dao.signout(id);
 					
 					session.invalidate();
-					return new CommandAction(true, "select.do");
+					return new CommandAction(true, "list.do");
 				}else {
 					return new CommandAction(true, "login.do");
 				}

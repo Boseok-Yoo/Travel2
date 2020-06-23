@@ -19,7 +19,6 @@ import kr.co.travel2.command.ProfileCommand;
 import kr.co.travel2.command.ReadCommand;
 import kr.co.travel2.command.ReplyCommand;
 import kr.co.travel2.command.ReplyUICommand;
-import kr.co.travel2.command.SelectByIdCommand;
 import kr.co.travel2.command.SelectCommand;
 import kr.co.travel2.command.SignoutCommand;
 import kr.co.travel2.command.SignupCommand;
@@ -83,9 +82,7 @@ public class FrontController extends HttpServlet {
 			com = new SignupUICommand();
 		} else if (sp.equalsIgnoreCase("/signup.do")) {
 			com = new SignupCommand();
-		} else if (sp.equalsIgnoreCase("/selectById")) {
-			com = new SelectByIdCommand();
-		} else if (sp.equalsIgnoreCase("/select.do")) {
+		}  else if (sp.equalsIgnoreCase("/select.do")) {
 			com = new SelectCommand();
 		} else if (sp.equalsIgnoreCase("/signout.do")) {
 			com = new SignoutCommand();

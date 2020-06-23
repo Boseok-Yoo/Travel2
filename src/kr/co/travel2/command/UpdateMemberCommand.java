@@ -28,6 +28,6 @@ public class UpdateMemberCommand implements Command {
 		MemberDAO dao = new MemberDAO();
 		dao.update(new MemberDTO(id, name, age, pw));
 		
-		return new CommandAction(true, "selectById.do?id"+id);
+		return new CommandAction(true, "login.jsp");
 	}
 }

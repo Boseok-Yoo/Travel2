@@ -20,10 +20,10 @@
 <body>
    <form class="container" action="insert.do" method="get">
       <h2>글 쓰기</h2>
-      <input name="num" value="${dto.num}" hidden="true"> <label for="exampleFormControlInput1">제목</label> <br>
+      <input name="num" value="${dto.num}" hidden="true"> 
+      <label for="exampleFormControlInput1">제목</label><br>
       <div class="form-inline">
          <select class="custom-select" name="location" id="location">
-            <!-- <optgroup label="지역"> -->
             <option value="001">서울</option>
             <option value="002">부산</option>
             <option value="003">대구</option>
@@ -42,8 +42,8 @@
             <option value="016">경남</option>
             <option value="017">제주</option>
             <option value="018">기타</option>
-            <!-- </optgroup> -->
-         </select> &nbsp; <input name="title" class="form-control" id="exampleFormControlInput1" value="${dto.title}" required="required">
+         </select> &nbsp; 
+         <input placeholder="제목을 입력하세요" name="title" class="form-control" id="exampleFormControlInput1" value="${dto.title}" required="required">
       </div>
 	  <br>
       <label for="exampleFormControlInput1">작성자 ${login.id}</label>
@@ -52,7 +52,7 @@
       <div class="form-group">
       	 <br>
          <label for="exampleFormControlTextarea1">내용</label>
-         <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="content">${dto.content }</textarea>
+         <textarea placeholder="내용을 작성하세요" class="form-control" id="exampleFormControlTextarea1" rows="5" name="content">${dto.content }</textarea>
       </div>
       <button class="btn btn-primary" type="submit">등록</button>
       

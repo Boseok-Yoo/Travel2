@@ -25,7 +25,7 @@
 	   </c:if>
 	   
 	   <c:if test="${not empty login.id}">
-	   	  <p>"<a href="profile.do?id=${login.id}" class="text-success">${login.id}</a>"님 반갑습니다</p>	
+	   	  <p>"${login.id}"님 반갑습니다</p>	
 	      <a href="logout.do">로그아웃</a>
 	   </c:if><br>
 	   
@@ -58,20 +58,24 @@
 	</nav>
 	   <br>
 	  
-	    
-	   
-	  <h3 class="text-center">회원 정보</h3>
-	  
-	  <div class="container">
-	  <h2>${login.id}</h2>
-	  <div class="card" style="width:400px">
-	    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-	    <div class="card-body">
-	      <h4 class="card-title">John Doe</h4>
-	      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-	      <a href="#" class="btn btn-primary">See Profile</a>
-  		</div>
-	  </div>
+	 <div class="container" style="margin:0 auto">
+	<h1 class="text-center">${login.id}님의 정보</h1><br><br>
+
+	<div class="card">
+    <div class="card-body">
+    	ID: ${dto.id}<br> 
+		이름: ${dto.name}<br> 
+		나이: ${dto.age}<br><br>
+ 
+		<c:if test="${dto.id eq login.id}">
+			<a href="updatememberui.do?id=${dto.id}" class="btn btn-outline-success" role="button">수정</a> 
+			<a href="signout.do?id=${dto.id}" class="btn btn-outline-danger" role="button" onclick="if(!confirm('삭제하시겠습니까?')){return false;}">삭제</a>
+		</c:if>
+			<a href="list.do" class="btn btn-outline-primary" role="button">목록</a>
+
+    </div>
+  	</div>
+	</div>
 
 
 </body>

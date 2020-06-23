@@ -70,7 +70,7 @@
 
 		번호: ${dto.num}<br> 
 		지역: ${dto.location}<br> 
-		작성날짜:${dto.writeday}<br> 
+		작성날짜: ${dto.writeday}<br> 
 		<i class="far fa-eye"></i>${dto.readcnt}<br> 
 		작성자: ${dto.writer}<br> 
 		내용: ${dto.content}<br> 
@@ -89,7 +89,7 @@
 			<a href="#" class="btn btn-outline-dark" role="button">맛집</a>
   	    </c:if>
 		
-		<c:if test="${login.id == dto.writer}"><br>
+		<c:if test="${login.id eq dto.writer}"><br>
 			<a href="updateui.do?num=${dto.num}"class="btn btn-outline-success" role="button">수정</a> 
 			<a href="delete.do?num=${dto.num}" class="btn btn-outline-danger" role="button" onclick="if(!confirm('삭제하시겠습니까?')){return false;}">삭제</a> 
   	    </c:if>		

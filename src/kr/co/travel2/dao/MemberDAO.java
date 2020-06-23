@@ -83,33 +83,6 @@ public class MemberDAO {
 		}
 		return list;
 	}
-	public MemberDTO selectById(String id) {
-		MemberDTO dto = null;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "select * from member where id = ?";
-		ResultSet rs = null;
-		
-		try {
-			conn = dataFactory.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				String name = rs.getString("name");
-				int age = rs.getInt("age");
-				
-				dto = new MemberDTO(id, name, age, null);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			closeAll(rs, pstmt, conn);
-		}	
-		return dto;
-	}
 	public boolean login(LoginDTO dto) {
 		boolean isLogin = false;
 		Connection conn = null;
@@ -135,7 +108,7 @@ public class MemberDAO {
 		return isLogin;		
 	}
 	public MemberDTO updateui(String id) {
-		return selectById(id);
+		return profile(id);
 	}
 	public void update(MemberDTO dto) {
 		Connection conn = null;

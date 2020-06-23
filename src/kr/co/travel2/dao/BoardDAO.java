@@ -187,8 +187,8 @@ public class BoardDAO {
 		BoardDTO dto = new BoardDTO();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "select num, writer, title, content, s.location, repRoot, repStep, repIndent "
-				+ "from BOARD2 b left join SITE s on b.location = sid  where num = ?";
+		String sql = "select num, writer, title, content, location, repRoot, repStep, repIndent "
+				+ "from BOARD2 where num = ?";
 		ResultSet rs = null;
 		
 		try {

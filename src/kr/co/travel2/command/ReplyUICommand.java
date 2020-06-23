@@ -1,6 +1,7 @@
 package kr.co.travel2.command;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import kr.co.travel2.dao.BoardDAO;
 import kr.co.travel2.domain.BoardDTO;
 import kr.co.travel2.domain.Command;
 import kr.co.travel2.domain.CommandAction;
+import kr.co.travel2.domain.SiteDTO;
 
 public class ReplyUICommand implements Command {
 
@@ -21,10 +23,13 @@ public class ReplyUICommand implements Command {
 		if (sNum != null) {
 			num = Integer.parseInt(sNum);
 		}
+		
 		BoardDAO dao = new BoardDAO();
 		BoardDTO dto = dao.updateui(num);
+		List<SiteDTO> siteList = dao.site();
 		
 		request.setAttribute("dto", dto);
+		request.setAttribute("siteList", siteList);
 		
 		return new CommandAction(false, "reply.jsp");
 	}

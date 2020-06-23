@@ -96,12 +96,11 @@
      
    <c:forEach items="${list}" var="dto">
       <tr>
-         <td>${dto.num}</td>
-         <td>${dto.location}</td>
-         <td width="300px"><c:forEach begin="0" end="${dto.repIndent}">&nbsp;&nbsp;                                             
-    </c:forEach> 
+         <td>${dto.num}</td>   
+         <td>${dto.location}</td>    
+         <td width="300px"><c:forEach begin="0" end="${dto.repIndent}">&nbsp;&nbsp;</c:forEach>                                            
             <a href="read.do?num=${dto.num}">${dto.title}</a>
-            </td>
+         </td>
          <td>${dto.writer}</td>
          <td>${dto.writeday}</td>
          <td>${dto.readcnt}</td>

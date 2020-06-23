@@ -23,10 +23,9 @@ public class LoginCommand implements Command {
 		boolean login = new MemberDAO().login(new LoginDTO(id, pw));
 		
 		
-		
 		if(login) {
 			HttpSession session = request.getSession();
-			session.setMaxInactiveInterval(30);
+			session.setMaxInactiveInterval(60 * 15);
 			session.setAttribute("login", new LoginDTO(id, null));
 			
 			return new CommandAction(true, "list.do");

@@ -20,14 +20,14 @@
 </div>
 
 	<c:if test="${empty login.id}">
-      <a href="signup.jsp">회원가입</a>
-      <a href="login.jsp">로그인</a>
+      <a href="signup.jsp" class="link_login">회원가입</a>
+      <a href="login.jsp" class="link_login">로그인</a>
    </c:if>
    
    <c:if test="${not empty login.id}">
-   	  <p>"<a href="profile.do?id=${login.id}" class="text-success">${login.id}</a>"님 반갑습니다</p>
+   	  <p>"<a href="profile.do?id=${login.id}" class="link_join">${login.id}</a>"님 반갑습니다</p>
       <a href="logout.do">로그아웃</a>
-   </c:if><br>
+   </c:if>
    
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

@@ -26,7 +26,6 @@ public class ReplyCommand implements Command {
 		String content = request.getParameter("content");
 		String location = request.getParameter("location");
 		
-		System.out.println("durl");
 		
 		BoardDAO dao = new BoardDAO();
 		BoardDTO dto = new BoardDTO(-1, writer, title, content, null, location, 0, 0, 0, 0);		
