@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.dao.Board2DAO;
-import kr.co.domain.BoardDTO;
+import kr.co.domain.Board2DTO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 
@@ -21,7 +21,7 @@ public class InsertCommand implements Command {
 		String location = request.getParameter("location");
 
 		Board2DAO dao = new Board2DAO();
-		dao.insert(new BoardDTO(-1, writer, title, content, null, location, 0, 0, 0, 0));
+		dao.insert(new Board2DTO(-1, writer, title, content, null, location, 0, 0, 0, 0));
 
 //		for (int i = 0; i < 100; i++) {
 //			dao.insert(new BoardDTO(-1, "writer" + i, "title" + i, "content" + i, null, "001", 0, 0, 0, 0));

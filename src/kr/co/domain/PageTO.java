@@ -13,7 +13,7 @@ public class PageTO {
 	private int beginPageNum; // 페이징 시작 번호 curPage 종속
 	private int stopPageNum; // 페이징 끝 번호 curPage 종속
 
-	private List<BoardDTO> list;
+	private List<Board2DTO> list;
 	
 	public PageTO() {
 		changeVarVal();
@@ -83,10 +83,10 @@ public class PageTO {
 	public void setStopPageNum(int stopPageNum) {
 		this.stopPageNum = stopPageNum;
 	}
-	public List<BoardDTO> getList() {
+	public List<Board2DTO> getList() {
 		return list;
 	}
-	public void setList(List<BoardDTO> list) {
+	public void setList(List<Board2DTO> list) {
 		this.list = list;
 	}
 

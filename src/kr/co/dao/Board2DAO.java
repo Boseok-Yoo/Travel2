@@ -12,10 +12,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import kr.co.domain.BoardDTO;
+import kr.co.domain.Board2DTO;
 import kr.co.domain.LoginDTO;
 import kr.co.domain.PageTO;
-import kr.co.domain.SiteDTO;
+import kr.co.domain.Board2SiteDTO;
 
 public class Board2DAO {
 	private DataSource dataFactory;
@@ -37,8 +37,8 @@ public class Board2DAO {
 				e.printStackTrace();
 			}
 		}
-	public List<BoardDTO> list() {
-		List<BoardDTO> list = new ArrayList<BoardDTO>();
+	public List<Board2DTO> list() {
+		List<Board2DTO> list = new ArrayList<Board2DTO>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "select * from board2";
@@ -61,7 +61,7 @@ public class Board2DAO {
 				int repStep = rs.getInt("repStep");
 				int repIndent = rs.getInt("repIndent");
 				
-				list.add(new BoardDTO(num, writer, title, null, writeday, location, readcnt, repRoot, repStep, repIndent));
+				list.add(new Board2DTO(num, writer, title, null, writeday, location, readcnt, repRoot, repStep, repIndent));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,7 +70,7 @@ public class Board2DAO {
 		}
 		return list;
 	}
-	public void insert(BoardDTO dto) {
+	public void insert(Board2DTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "insert into board2 (num, writer, title, content, location, repRoot, repStep, repIndent) "
@@ -120,8 +120,8 @@ public class Board2DAO {
 		}		
 		return num;
 	}
-	public BoardDTO read(int num) {
-		BoardDTO dto = null;
+	public Board2DTO read(int num) {
+		Board2DTO dto = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "select num, writer, title, content, writeday, s.location, readcnt from BOARD2 b left join SITE s on b.location = sid  where num = ?";
@@ -147,7 +147,7 @@ public class Board2DAO {
 				String location = rs.getString("location");
 				int readcnt = rs.getInt("readcnt");
 				
-				dto = new BoardDTO(num, writer, title, content, writeday, location, readcnt, 0, 0, 0);
+				dto = new Board2DTO(num, writer, title, content, writeday, location, readcnt, 0, 0, 0);
 				
 				isOk = true;
 			}						
@@ -183,8 +183,8 @@ public class Board2DAO {
 		}
 	}
 	
-	public BoardDTO updateui(int num) {
-		BoardDTO dto = new BoardDTO();
+	public Board2DTO updateui(int num) {
+		Board2DTO dto = new Board2DTO();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "select num, writer, title, content, location, repRoot, repStep, repIndent "
@@ -206,7 +206,7 @@ public class Board2DAO {
 				int repStep = rs.getInt("repStep");
 				int repIndent = rs.getInt("repIndent");
 				
-				dto = new BoardDTO(num, writer, title, content, null, location, 0, repRoot, repStep, repIndent);
+				dto = new Board2DTO(num, writer, title, content, null, location, 0, repRoot, repStep, repIndent);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -215,7 +215,7 @@ public class Board2DAO {
 		}
 		return dto;
 	}
-	public void update(BoardDTO dto) {
+	public void update(Board2DTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "update board2 set writer = ?, title = ?, content = ?, location = ? where num = ?";
@@ -237,7 +237,7 @@ public class Board2DAO {
 			closeAll(null, pstmt, conn);
 		}
 	}
-	public BoardDTO delete(int num) {
+	public Board2DTO delete(int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "delete from board2 where num = ?";
@@ -255,7 +255,7 @@ public class Board2DAO {
 		}
 		return null;
 	}
-	public void reply(int orgnum, BoardDTO dto) {
+	public void reply(int orgnum, Board2DTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "insert into board2 (num, writer, title, content, location, repRoot, repStep, repIndent) "
@@ -268,7 +268,7 @@ public class Board2DAO {
 			
 			int num = createNum(conn);
 			
-			BoardDTO orgDTO = updateui(orgnum);
+			Board2DTO orgDTO = updateui(orgnum);
 			
 			stepPlus1(conn, orgDTO);
 			
@@ -301,7 +301,7 @@ public class Board2DAO {
 			closeAll(null, pstmt, conn);
 		}	
 	}
-	private void stepPlus1(Connection conn, BoardDTO orgDTO) {
+	private void stepPlus1(Connection conn, Board2DTO orgDTO) {
 		PreparedStatement pstmt = null;
 		String sql = "update board2 set repStep = repStep + 1 where repRoot = ? and repStep > ?";
 		
@@ -325,7 +325,7 @@ public class Board2DAO {
 				"(select * from board order by repRoot desc, repStep asc))" + 
 				"where rnum >= ? and rnum <= ?";
 		PageTO to = new PageTO(curPage);
-		List<BoardDTO> list = new ArrayList<BoardDTO>();
+		List<Board2DTO> list = new ArrayList<Board2DTO>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -351,7 +351,7 @@ public class Board2DAO {
 				int readcnt = rs.getInt("readcnt");
 				int repIndent = rs.getInt("repIndent");
 				
-				BoardDTO dto = new BoardDTO(num, writer, title, null, writeday, location, readcnt, -1, -1, repIndent);
+				Board2DTO dto = new Board2DTO(num, writer, title, null, writeday, location, readcnt, -1, -1, repIndent);
 				
 				list.add(dto);
 			}
@@ -370,7 +370,7 @@ public class Board2DAO {
 				" from(select * from BOARD2 where location like decode (?, null, '%', ?) order by repRoot desc, repStep asc) b" + 
 				" left join site s on b.location = sid)where rnum >= ? and rnum <= ?";
 		PageTO to = new PageTO(curPage);
-		List<BoardDTO> list = new ArrayList<BoardDTO>();
+		List<Board2DTO> list = new ArrayList<Board2DTO>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -398,7 +398,7 @@ public class Board2DAO {
 				int readcnt = rs.getInt("readcnt");
 				int repIndent = rs.getInt("repIndent");
 				
-				BoardDTO dto = new BoardDTO(num, writer, title, null, writeday, location, readcnt, -1, -1, repIndent);
+				Board2DTO dto = new Board2DTO(num, writer, title, null, writeday, location, readcnt, -1, -1, repIndent);
 				
 				list.add(dto);
 			}
@@ -432,8 +432,8 @@ public class Board2DAO {
 		return amount;
 	}
 	
-	public List<SiteDTO> site(){
-		List<SiteDTO> siteList = new ArrayList<SiteDTO>();
+	public List<Board2SiteDTO> site(){
+		List<Board2SiteDTO> siteList = new ArrayList<Board2SiteDTO>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "select * from site";
@@ -448,7 +448,7 @@ public class Board2DAO {
 				String sid = rs.getString("sid");
 				String location = rs.getString("location");
 				
-				siteList.add(new SiteDTO(sid, location));
+				siteList.add(new Board2SiteDTO(sid, location));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

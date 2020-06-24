@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.dao.Board2DAO;
-import kr.co.domain.BoardDTO;
+import kr.co.domain.Board2DTO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
-import kr.co.domain.SiteDTO;
+import kr.co.domain.Board2SiteDTO;
 
 public class ReplyUICommand implements Command {
 
@@ -25,8 +25,8 @@ public class ReplyUICommand implements Command {
 		}
 		
 		Board2DAO dao = new Board2DAO();
-		BoardDTO dto = dao.updateui(num);
-		List<SiteDTO> siteList = dao.site();
+		Board2DTO dto = dao.updateui(num);
+		List<Board2SiteDTO> siteList = dao.site();
 		
 		request.setAttribute("dto", dto);
 		request.setAttribute("siteList", siteList);

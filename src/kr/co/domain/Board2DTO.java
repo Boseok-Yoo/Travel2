@@ -2,7 +2,7 @@ package kr.co.domain;
 
 import java.io.Serializable;
 
-public class BoardDTO implements Serializable{
+public class Board2DTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int num;
 	private String writer;
@@ -15,12 +15,12 @@ public class BoardDTO implements Serializable{
 	private int repStep;
 	private int repIndent;
 	
-	public BoardDTO() {
+	public Board2DTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public BoardDTO(int num, String writer, String title, String content, String writeday, String location, int readcnt, int repRoot,
+	public Board2DTO(int num, String writer, String title, String content, String writeday, String location, int readcnt, int repRoot,
 			int repStep, int repIndent) {
 		super();
 		this.num = num;
@@ -112,7 +112,7 @@ public class BoardDTO implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BoardDTO other = (BoardDTO) obj;
+		Board2DTO other = (Board2DTO) obj;
 		if (num != other.num)
 			return false;
 		return true;

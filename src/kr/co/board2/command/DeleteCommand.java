@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.dao.Board2DAO;
-import kr.co.domain.BoardDTO;
+import kr.co.domain.Board2DTO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 
@@ -22,7 +22,7 @@ public class DeleteCommand implements Command {
 			num = Integer.parseInt(sNum);
 		}
 		Board2DAO dao = new Board2DAO();
-		BoardDTO dto = dao.delete(num);
+		Board2DTO dto = dao.delete(num);
 		
 		return new CommandAction(true, "list.do");
 	}

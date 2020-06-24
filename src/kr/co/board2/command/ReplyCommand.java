@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.dao.Board2DAO;
-import kr.co.domain.BoardDTO;
+import kr.co.domain.Board2DTO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
 
@@ -28,7 +28,7 @@ public class ReplyCommand implements Command {
 		
 		
 		Board2DAO dao = new Board2DAO();
-		BoardDTO dto = new BoardDTO(-1, writer, title, content, null, location, 0, 0, 0, 0);		
+		Board2DTO dto = new Board2DTO(-1, writer, title, content, null, location, 0, 0, 0, 0);		
 		dao.reply(orgnum, dto);
 		
 		return new CommandAction(true, "list.do");
