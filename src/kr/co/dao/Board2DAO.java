@@ -316,51 +316,7 @@ public class Board2DAO {
 			closeAll(null, pstmt, null);
 		}
 	}
-	
-	public PageTO page(int curPage) {
-		String sql = "select * from" + 
-				"(select rownum as rnum, num, title, writer, writeday, location, readcnt, repIndent from" + 
-				"(select * from board order by repRoot desc, repStep asc))" + 
-				"where rnum >= ? and rnum <= ?";
-		PageTO to = new PageTO(curPage);
-		List<Board2DTO> list = new ArrayList<Board2DTO>();
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			conn = dataFactory.getConnection();
-			int amount = getAmount(conn);
-			to.setAmount(amount);
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, to.getStartNum());
-			pstmt.setInt(2, to.getEndNum());
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				int num = rs.getInt("num");
-				String title = rs.getString("title");
-				String writer = rs.getString("writer");
-				String writeday = rs.getString("writeday");
-				String location = rs.getString("location");
-				int readcnt = rs.getInt("readcnt");
-				int repIndent = rs.getInt("repIndent");
-				
-				Board2DTO dto = new Board2DTO(num, writer, title, null, writeday, location, readcnt, -1, -1, repIndent);
-				
-				list.add(dto);
-			}
-			to.setList(list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			closeAll(rs, pstmt, conn);
-		}	
-		return to;
-	}	
+
 	
 	public PageTO page(int curPage, String sid) {
 		String sql = "select * from" + 
@@ -376,7 +332,8 @@ public class Board2DAO {
 		
 		try {
 			conn = dataFactory.getConnection();
-			int amount = getAmount(conn);
+			int amount = getAmount(conn, sid);
+			
 			to.setAmount(amount);
 			
 			pstmt = conn.prepareStatement(sql);
@@ -409,15 +366,17 @@ public class Board2DAO {
 		return to;
 	}	
 	
-	private int getAmount(Connection conn) {
+	private int getAmount(Connection conn, String sid) {
 		int amount = 0;
 		
 		PreparedStatement pstmt = null;
-		String sql = "select count(num) from board2";
+		String sql = "select count(num) from board2 where location like decode (?, null, '%', ?)";
 		ResultSet rs = null;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sid);
+			pstmt.setString(2, sid);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				amount = rs.getInt(1);

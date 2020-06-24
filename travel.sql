@@ -13,6 +13,8 @@ repIndent number(4)
 select * from BOARD2
 drop table board2
 
+
+
 create table site(
 sid varchar2(3) primary key,
 location varchar2(6) 
@@ -81,6 +83,8 @@ select * from
 (select rownum rnum, num, writer, writeday, title, content, s.location, readcnt, repRoot, repStep, repIndent 
 from(select * from BOARD2 where location like decode ('', null, '%', '') order by repRoot desc, repStep asc) b 
 left join site s on b.location = sid)where rnum >= 1 and rnum <= 100
+
+select count(num) from board2 where location like decode ('', null, '%', '')
 
 
 select * from BOARD2 where repRoot = 116

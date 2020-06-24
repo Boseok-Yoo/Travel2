@@ -1,4 +1,3 @@
-<%@page import="kr.co.domain.Board2DTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -119,11 +118,11 @@
        <c:forEach begin="${to.beginPageNum}" end="${to.stopPageNum}" var="idx">
        
        <c:if test="${to.curPage == idx}">
-          <li class="page-item active"><a class="page-link" href="list.do?curPage=${idx}">${idx}</a></li>      
+          <li class="page-item active"><a class="page-link" href="list.do?curPage=${idx}&sid=${sid}">${idx}</a></li>      
         </c:if>    
             
         <c:if test="${to.curPage != idx}">
-           <li class="page-item"><a class="page-link" href="list.do?curPage=${idx}">${idx}</a></li>             
+           <li class="page-item"><a class="page-link" href="list.do?curPage=${idx}&sid=${sid}">${idx}</a></li>             
         </c:if>
        </c:forEach>    
        <li class="page-item ${to.curPage eq to.totalPage ? 'disabled' : ''}"><a class="page-link" href="list.do?curPage=${to.curPage < to.totalPage ? (to.curPage + 1) : to.totalPage}">></a></li>
