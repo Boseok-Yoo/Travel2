@@ -25,7 +25,7 @@
 	   </c:if>
 	   
 	   <c:if test="${not empty login.id}">
-	   	  <p>"${login.id}"님 반갑습니다</p>	
+	   	  <p>"<a href="profile.do?id=${login.id}" class="text-success">${login.id}</a>"님 반갑습니다</p>
 	      <a href="logout.do">로그아웃</a>
 	   </c:if><br>
 	   
@@ -74,9 +74,10 @@
 			<a href="list.do" class="btn btn-outline-primary" role="button">목록</a>
 
     </div>
-  	</div>
+  	</div><br>
+  		<h2 class="text-center">나의 글</h2>
+  		
+  	
 	</div>
-
-
 </body>
 </html>

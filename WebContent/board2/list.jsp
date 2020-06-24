@@ -92,8 +92,8 @@
       <th><i class="far fa-eye"></i></th>
       </tr>
     </thead>
-    <tbody>
-     
+    
+    <tbody>    
    <c:forEach items="${list}" var="dto">
       <tr>
          <td>${dto.num}</td>   

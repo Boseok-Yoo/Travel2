@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.dao.Board2DAO;
-import kr.co.domain.Board2DTO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
+import kr.co.dto.Board2DTO;
 
 public class UpdateCommand implements Command {
 

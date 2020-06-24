@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.dao.Board2DAO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
-import kr.co.domain.PageTO;
-import kr.co.domain.Board2SiteDTO;
+import kr.co.dto.Board2SiteDTO;
+import kr.co.dto.PageTO;
 
 public class ListPageCommand implements Command {
 

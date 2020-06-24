@@ -12,10 +12,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import kr.co.domain.Board2DTO;
-import kr.co.domain.LoginDTO;
-import kr.co.domain.PageTO;
-import kr.co.domain.Board2SiteDTO;
+import kr.co.dto.Board2DTO;
+import kr.co.dto.Board2SiteDTO;
+import kr.co.dto.PageTO;
 
 public class Board2DAO {
 	private DataSource dataFactory;
@@ -237,7 +236,7 @@ public class Board2DAO {
 			closeAll(null, pstmt, conn);
 		}
 	}
-	public Board2DTO delete(int num) {
+	public void delete(int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "delete from board2 where num = ?";
@@ -253,7 +252,6 @@ public class Board2DAO {
 		}finally {
 			closeAll(null, pstmt, conn);
 		}
-		return null;
 	}
 	public void reply(int orgnum, Board2DTO dto) {
 		Connection conn = null;

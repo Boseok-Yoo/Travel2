@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.co.dao.Board2DAO;
-import kr.co.domain.Board2DTO;
 import kr.co.domain.Command;
 import kr.co.domain.CommandAction;
-import kr.co.domain.Board2SiteDTO;
+import kr.co.dto.Board2DTO;
+import kr.co.dto.Board2SiteDTO;
 
 public class ReplyUICommand implements Command {
 

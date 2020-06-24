@@ -56,7 +56,7 @@
       </li>    
     </ul>
   </div>  
-</nav>
+</nav><br>
 
    <form class="container" action="reply.do" method="get">
    	  <input name="num" value="${dto.num}" hidden="true"> 

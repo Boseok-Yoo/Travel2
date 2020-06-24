@@ -10,8 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import kr.co.domain.LoginDTO;
-import kr.co.domain.MemberDTO;
+import kr.co.dto.LoginDTO;
+import kr.co.dto.MemberDTO;
 
 public class MemberDAO {
 	private DataSource dataFactory;
