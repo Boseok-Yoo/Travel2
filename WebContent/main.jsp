@@ -25,7 +25,7 @@
    </c:if>
    
    <c:if test="${not empty login.id}">
-   	  <p>"<a href="profile.do?id=${login.id}" class="link_join">${login.id}</a>"님 반갑습니다</p>
+   	  <p>"<a href="profile.do?id=${login.id}" class="text-success">${login.id}</a>"님 반갑습니다</p>
       <a href="logout.do">로그아웃</a>
    </c:if>
    
