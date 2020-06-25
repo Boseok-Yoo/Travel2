@@ -61,13 +61,13 @@
 </nav>
 <br>
 	
-   <form class="container" action="insert.do" method="get">
+   <form enctype="multipart/form-data" class="container" action="insert.do" method="post">
       <h2 class="text-center">글 쓰기</h2>
       <input name="num" value="${dto.num}" hidden="true"> 
       <label for="exampleFormControlInput1">제목</label><br>
       <div class="form-inline">
          <select class="custom-select" name="location" id="location">
-            <option value="001">서울</option>
+            <option selected value="001">서울</option>
             <option value="002">부산</option>
             <option value="003">대구</option>
             <option value="004">인천</option>
@@ -85,22 +85,27 @@
             <option value="016">경남</option>
             <option value="017">제주</option>
             <option value="018">기타</option>
-         </select> &nbsp; 
+
+         </select> &nbsp;        
          <input placeholder="제목을 입력하세요" name="title" class="form-control" id="exampleFormControlInput1" value="${dto.title}" required="required">
       </div>
 	  <br>
       <label for="exampleFormControlInput1">작성자</label>
       <input name="writer" class="form-control" id="exampleFormControlInput1" value="${login.id}" required="required" readonly>
-
+	  <br>	
+	  <input type="file" name="file" class="form-control" id="exampleFormFile">
+		
       <div class="form-group">
       	 <br>
          <label for="exampleFormControlTextarea1">내용</label>
          <textarea placeholder="내용을 작성하세요" class="form-control" id="exampleFormControlTextarea1" rows="5" name="content">${dto.content }</textarea>
       </div>
+      		
+			
       <button class="btn btn-primary" type="submit">등록</button>
       
    </form>
-
+	
    <script>
      
       $(document).ready(function() {
@@ -112,27 +117,6 @@
          var location = "<c:out value='${dto.location}'/>";
          $("#location").val(location).prop("selected", true); //값이 dto.location인 option 선택
       }
-  
    </script>
 </body>
 </html> 
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>글쓰기</h1>
-	
-	<form action="insert.do" method="post">
-		작성자: <input name="writer"><br>
-		제목: <input name="title"><br>
-		내용: <br>
-		<textarea rows="5" name="content"></textarea>		
-		<input type="submit" value="submit">
-	</form>
-</body>
-</html> -->

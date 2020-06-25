@@ -19,7 +19,7 @@ public class ProfileCommand implements Command {
 		String id = request.getParameter("id");
 		
 		MemberDAO dao = new MemberDAO();
-		MemberDTO dto = dao.profile(id);
+		MemberDTO dto = dao.selectById(id);
 		
 		request.setAttribute("dto", dto);
 

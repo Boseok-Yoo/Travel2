@@ -14,6 +14,6 @@ public class LoginUICommand implements Command{
 	@Override
 	public CommandAction execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		return new CommandAction(false, "list.do");
+		return new CommandAction(false, "login.jsp");
 	}
 }

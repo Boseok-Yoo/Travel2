@@ -108,7 +108,7 @@ public class MemberDAO {
 		return isLogin;		
 	}
 	public MemberDTO updateui(String id) {
-		return profile(id);
+		return selectById(id);
 	}
 	public void update(MemberDTO dto) {
 		Connection conn = null;
@@ -148,7 +148,7 @@ public class MemberDAO {
 			closeAll(null, pstmt, conn);
 		}	
 	}
-	public MemberDTO profile(String id) {
+	public MemberDTO selectById(String id) {
 		MemberDTO dto = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -174,6 +174,33 @@ public class MemberDAO {
 			closeAll(rs, pstmt, conn);
 		}
 		
+		return dto;
+	}
+	public MemberDTO checkId(LoginDTO loginDTO) {
+		MemberDTO dto = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "select * from member where id = ?";
+		ResultSet rs = null;
+		
+		try {
+			conn = dataFactory.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, loginDTO.getId());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String name = rs.getString("name");
+				int age = rs.getInt("age");
+				
+				dto = new MemberDTO(loginDTO.getId(), name, age, null);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
 		return dto;
 	}
 	

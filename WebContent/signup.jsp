@@ -56,10 +56,12 @@
 	<div class="container" style="margin:0 auto">
 	<h1 class="text-center">회원가입</h1><br><br>	
 
-    <form class="form-signin" action="signup.do" method="get">	
+    <form class="form-signin" action="signup.do" method="post">	
     
 	  <label for="inputID" class="sr-only">ID</label>
-	  <input name="id" class="form-control" placeholder="ID" required autofocus>
+	  <input id="id" name="id" class="form-control" placeholder="ID" required autofocus>
+ 	  <button type="button" class="btn btn-primary btn-sm">아이디 중복 체크</button>
+ 	  <div><p></p></div>
 	  
 	  <label for="inputName" class="sr-only">Name</label>
 	  <input name="name" class="form-control" placeholder="이름" required autofocus>
@@ -69,15 +71,36 @@
 	  
 	  
 	  <label for="inputPassword" class="sr-only">Password</label>
-	  <input name="pw" type="password" class="form-control" placeholder="Password" required>
+	  <input name="pw" type="password" class="form-control" placeholder="Password" required autofocus>
 	  	  
 	  <div class="checkbox mb-3">
     <label>
-      <input type="checkbox" value="remember-me"> 약관 동의</label>   
+      <input type="checkbox" value="remember-me" required> 약관 동의</label>   
       </div>
-  	<button class="btn btn-lg btn-primary btn-block" type="submit">회원 가입</button>
+      <input class="btn btn-lg btn-primary btn-block" type="submit" value="회원가입">
   
 	</form>			
 	</div>
+	 <script type="text/javascript">
+    	$(document).ready(function(){
+    		$("button").click(function(event){
+				event.preventDefault();
+				var id = $("#id").val();
+				
+				$.ajax({
+					type : "get", 
+					url : "IdCheck",
+					data : {
+						id : id
+					},
+					dataType : "text",
+					success : function(result) {
+						/* $("p").text(result); */
+						alert(result);
+					}
+				});
+			});
+    	}); 
+    </script>
 </body>
 </html>

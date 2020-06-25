@@ -414,25 +414,4 @@ public class Board2DAO {
 		}
 		return siteList;
 	}
-	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

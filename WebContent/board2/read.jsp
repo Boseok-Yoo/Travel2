@@ -1,4 +1,3 @@
-<%@page import="kr.co.domain.Board2DTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -22,7 +21,7 @@
 	</div>
 	
 	<c:if test="${empty login.id}">
-	      <a href="signup.jsp">회원가입</a>
+	      <a href="signupui.do">회원가입</a>
 	      <a href="login.jsp">로그인</a>
 	   </c:if>
 	   
@@ -63,18 +62,21 @@
 
 
    <div class="container" style="margin:0 auto">
-   <h1 class="text-center">${dto.title}</h1>
-
+   
+  		<h1>${dto.title}</h1>
+  		
+		작성날짜: ${dto.writeday}<br> 
+		지역: ${dto.location}<br> 
+		작성자: ${dto.writer}<br> 
+		<i class="far fa-eye"></i>${dto.readcnt}<br> 
+		
 		<div class="card">
 		<div class="card-body">
 
-		번호: ${dto.num}<br> 
-		지역: ${dto.location}<br> 
-		작성날짜: ${dto.writeday}<br> 
-		<i class="far fa-eye"></i>${dto.readcnt}<br> 
-		작성자: ${dto.writer}<br> 
+		
 		내용: ${dto.content}<br> 
 		
+		<hr>
 		
 		<c:if test="${empty login.id}"> 
 			<a href="list.do" class="btn btn-outline-primary" role="button">목록</a>

@@ -28,6 +28,6 @@ public class SignupCommand implements Command {
 		MemberDAO dao = new MemberDAO();
 		dao.signup(new MemberDTO(id, name, age, pw));
 		
-		return new CommandAction(true, "board2/login.jsp");
+		return new CommandAction(true, "login.jsp");
 	}
 }

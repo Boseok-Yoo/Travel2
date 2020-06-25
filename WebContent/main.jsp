@@ -20,7 +20,7 @@
 </div>
 
 	<c:if test="${empty login.id}">
-      <a href="signup.jsp" class="link_login">회원가입</a>
+      <a href="signupui.do" class="link_login">회원가입</a>
       <a href="login.jsp" class="link_login">로그인</a>
    </c:if>
    

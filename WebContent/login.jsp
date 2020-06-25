@@ -24,7 +24,7 @@
 </div>
 
 	<c:if test="${empty login.id}">
-      <a href="signup.jsp">회원가입</a>
+      <a href="signupui.do">회원가입</a>
    </c:if>
    
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">

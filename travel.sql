@@ -90,3 +90,10 @@ select count(num) from board2 where location like decode ('', null, '%', '')
 select * from BOARD2 where repRoot = 116
 
 
+create table FileUpload(
+fNum number(38) primary key references board2(num),
+fName varchar2(100) not null,
+ogFName varchar2(100) not null,
+url varchar2(40)
+)
+
