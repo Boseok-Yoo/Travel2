@@ -58,7 +58,7 @@
   </div>  
 </nav><br>
 
-   <form class="container" action="reply.do" method="get">
+   <form enctype="multipart/form-data" class="container" action="reply.do" method="post">
    	  <input name="num" value="${dto.num}" hidden="true"> 
       <h2 class="text-center">답글</h2>
       
@@ -78,8 +78,10 @@
       </div>
 	  <br>
       <label for="exampleFormControlInput1">작성자</label>
-      <input name="writer" class="form-control" id="exampleFormControlInput1" value=" ${login.id}" required="required" readonly>
-
+      <input name="writer" class="form-control" id="exampleFormControlInput1" value="${login.id}" required="required" readonly>
+	  <br>
+	  <input type="file" name="file" class="form-control" id="exampleFormFile">	
+	  
       <div class="form-group">
       	 <br>
          <label for="exampleFormControlTextarea1">내용</label>

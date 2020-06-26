@@ -11,14 +11,15 @@ repStep number(4),
 repIndent number(4)
 )
 select * from BOARD2
+
 drop table board2
-
-
 
 create table site(
 sid varchar2(3) primary key,
 location varchar2(6) 
 )
+select * from site
+
 
 insert into site (sid, location) values('001','서울')
 insert into site (sid, location) values('002','부산')
@@ -39,7 +40,6 @@ insert into site (sid, location) values('016','경남')
 insert into site (sid, location) values('017','제주')
 insert into site (sid, location) values('018','기타')
 
-select * from site
 
 create table member(
 id varchar2(21) primary key,
@@ -47,36 +47,33 @@ name varchar2(21),
 age number(3) check(age < 200),
 pw varchar2(21)
 )
-drop table member
-
 select * from member
 
 
-select num, writer, title, content, s.location, repRoot, repStep, repIndent from BOARD2 b
+select num, writer, title, content, s.location, repRoot, repStep, repIndent 
+from BOARD2 b
 left join SITE s on b.location = sid
 where location = 
 
-select num, writer, title, content, s.location, repRoot, repStep, repIndent from BOARD2 b left join SITE s on b.location = sid order by repRoot desc, repStep asc
+select num, writer, title, content, s.location, repRoot, repStep, repIndent 
+from BOARD2 b 
+left join SITE s on b.location = sid 
+order by repRoot desc, repStep asc
 
-
+--insert(normal - withoutFile)
 insert into BOARD2(num, writer, title, content, location, repRoot, repStep, repIndent)
 values ('101','bossi','test','and','002',0,0,0)
 
-
-select * from 
-(select rownum as rnum, num, title, writer, writeday, s.location, readcnt, repIndent 
-from board2 b left join site s on b.location = s.sid 
-order by repRoot desc, repStep asc) 
-where rnum >= 1 and rnum <= 11
-
+--page
 select * from 
 (select rownum as rnum, num, title, writer, writeday, s.location, sid, readcnt, repIndent 
 from(select * from BOARD2 order by repRoot desc, repStep asc) b 
 left join site s on b.location = s.sid) 
 where rnum >= 1 and rnum <= 105 
 
-
-select num, writer, title, content, s.location, repRoot, repStep, repIndent from BOARD2 b left join SITE s on b.location = sid  where num = 30
+--read(int num)
+select num, writer, title, content, s.location, repRoot, repStep, repIndent 
+from BOARD2 b left join SITE s on b.location = sid  where num = 30
 
 -- page final
 select * from
@@ -84,16 +81,53 @@ select * from
 from(select * from BOARD2 where location like decode ('', null, '%', '') order by repRoot desc, repStep asc) b 
 left join site s on b.location = sid)where rnum >= 1 and rnum <= 100
 
+--amount
 select count(num) from board2 where location like decode ('', null, '%', '')
 
 
 select * from BOARD2 where repRoot = 116
 
 
-create table FileUpload(
+create table fileupload(
 fNum number(38) primary key references board2(num),
 fName varchar2(100) not null,
 ogFName varchar2(100) not null,
 url varchar2(40)
 )
+drop table fileupload
+select * from FILEUPLOAD
 
+--insertFile
+insert into fileupload (fNum, fName, ogFName, url) values (1, 'a', 'b', '') 
+				
+--file+board select(list)
+
+select num, writer, title, content, s.location, repRoot, repStep, repIndent 
+from BOARD2 b
+left join SITE s on b.location = sid
+where location = 
+
+
+select * 
+from FILEUPLOAD f 
+left join board2  on f.fNum = num 
+where num = 170
+	
+				
+select * from fileupload f				
+left join
+(select num, writer, title, content, s.location, repRoot, repStep, repIndent 
+from BOARD2 b left join SITE s on b.location = sid)s
+on f.fNum = num
+where num = 1
+				
+delete from BOARD2 where num = 5	
+delete from FILEUPLOAD where fNum = 5
+select * from BOARD2
+				
+				
+				
+				
+				
+				
+				

@@ -61,7 +61,7 @@
 
 
 
-   <div class="container" style="margin:0 auto">
+   <div class="container" style="margin:30px auto">
    
   		<h1>${dto.title}</h1>
   		
@@ -70,11 +70,13 @@
 		작성자: ${dto.writer}<br> 
 		<i class="far fa-eye"></i>${dto.readcnt}<br> 
 		
+		<img width="100%" src="img/${fdto.fName}"/>
+		
+		
+		
 		<div class="card">
 		<div class="card-body">
-
-		
-		내용: ${dto.content}<br> 
+	    ${dto.content}<br> 
 		
 		<hr>
 		
