@@ -115,11 +115,15 @@
   </table>
 
         <ul class="pagination justify-content-center" style="margin: 0 auto;">
-       <li class="page-item ${to.curPage eq 1 ? 'disabled' : ''}"><a class="page-link" href="list.do?curPage=${to.curPage > 1 ? (to.curPage -1) : 1}"><</a></li>
+	       <li class="page-item ${to.curPage eq 1 ? 'disabled' : ''}">
+	       		<a class="page-link" href="list.do?curPage=${to.curPage > 1 ? (to.curPage -1) : 1}"><</a>
+	       </li>
        <c:forEach begin="${to.beginPageNum}" end="${to.stopPageNum}" var="idx">
        
        <c:if test="${to.curPage == idx}">
-          <li class="page-item active"><a class="page-link" href="list.do?curPage=${idx}&sid=${sid}">${idx}</a></li>      
+          <li class="page-item active">
+          	<a class="page-link" href="list.do?curPage=${idx}&sid=${sid}">${idx}</a>
+   		  </li>      
         </c:if>    
             
         <c:if test="${to.curPage != idx}">

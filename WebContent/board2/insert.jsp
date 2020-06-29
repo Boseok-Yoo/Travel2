@@ -97,7 +97,7 @@
       <div class="form-group">
       	 <br>
          <label for="exampleFormControlTextarea1">내용</label>
-         <textarea placeholder="내용을 작성하세요" class="form-control" id="exampleFormControlTextarea1" rows="5" name="content" required>${dto.content }</textarea>
+         <textarea placeholder="내용을 작성하세요" class="form-control" id="exampleFormControlTextarea1" rows="5" name="content" required>${dto.content}</textarea>
       </div>
       		
 			
@@ -110,12 +110,6 @@
       $(document).ready(function() {
          $("#location").val("${dto.location }");
       });
-      
-      
-      window.onload = function() {//윈도우가 열리면
-         var location = "<c:out value='${dto.location}'/>";
-         $("#location").val(location).prop("selected", true); //값이 dto.location인 option 선택
-      }
    </script>
 </body>
 </html> 

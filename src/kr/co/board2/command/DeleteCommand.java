@@ -19,8 +19,7 @@ public class DeleteCommand implements Command {
 		int num = -1;
 		if (sNum != null) {
 			num = Integer.parseInt(sNum);
-		}
-		
+		}		
 		Board2DAO dao = new Board2DAO();
 		dao.deleteF(num);
 		dao.delete(num);

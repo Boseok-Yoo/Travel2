@@ -28,20 +28,15 @@ public class Board2DAO {
 			e.printStackTrace();
 		}
 	}
-
-	public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn) {
+	public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn) {	
 		try {
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (conn != null)
-				conn.close();
+			if (rs != null) rs.close();
+			if (pstmt != null) pstmt.close();
+			if (conn != null) conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 	public List<Board2DTO> list() {
 		List<Board2DTO> list = new ArrayList<Board2DTO>();		
 		Connection conn = null;
